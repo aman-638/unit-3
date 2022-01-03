@@ -73,29 +73,29 @@ document.querySelector("#btn").addEventListener("click",function(){
 })
 
 
-var totalitem=0;
+// var totalitem=0;
 
-document.querySelector("#cart").addEventListener("click",function(){
-   order();
-});
+// document.querySelector("#cart").addEventListener("click",function(){
+//    order();
+// });
 
-var dish=JSON.parse(localStorage.getItem("dishdata"))||[];
+// var dish=JSON.parse(localStorage.getItem("dishdata"))||[];
 
-function order(){
- console.log("hello");
+// function order(){
+//  console.log("hello");
 
-    var name=document.querySelector("#name")
-    var price=document.querySelector("#price")
-    var cou=document.querySelector("#item");
-    totalitem=totalitem+1;
-    cou.append(totalitem);
+//     var name=document.querySelector("#name")
+//     var price=document.querySelector("#price")
+//     var cou=document.querySelector("#item");
+//     totalitem=totalitem+1;
+//     cou.append(totalitem);
 
-    var obj={
-        name1:name.value,
-        price1:price.value
-    }
-    dish.push(obj);
-    localStorage.setItem("dishdata",JSON.stringify(dish));
-}
+//     var obj={
+//         name1:name.value,
+//         price1:price.value
+//     }
+//     dish.push(obj);
+//     localStorage.setItem("dishdata",JSON.stringify(dish));
+// }
 
 </script>
