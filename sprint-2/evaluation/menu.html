@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <style>
+        .menu{
+            display: grid;
+            grid-gap: 20px;
+            grid-template-columns: repeat(2,1fr);
+        }
+        .menu>div{
+            text-align: center;
+            background: dimgray;
+            padding: 10px;
+        }
+        #cart{
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">Go TO CART</button><p id="item"></p>
+    <div class="menu">
+        
+
+    </div>
+</body>
+</html>
+
+<script>
+menu();
+
+var menu_div=document.querySelector(".menu");
+     
+async function menu(){
+    try{
+    var res=await fetch("https://www.themealdb.com/api/json/v1/1/categories.php");
+    var data=await res.json()
+    dishappend(data.categories);
+    console.log(data.categories);
+
+    }catch(err){
+        console.log("err:",err);
+    }
+}
+
+
+
+function dishappend(data){
+    data.map(function(dish){
+        var div=document.createElement('div');
+       var img=document.createElement('img');
+       img.src=dish.strCategoryThumb;
+       var name=document.createElement("p");
+       name.innerText=dish.strCategory;
+       name.setAttribute("id","name")
+       var price=document.createElement("p");
+       price.innerText=`₹-${Math.floor(Math.random()*400)+100}`;
+       price.setAttribute("id","price");
+       var cart=document.createElement("button");
+       cart.setAttribute("id","cart");
+       cart.innerText="Add To Cart";
+       div.append(img,name,price,cart);
+       menu_div.append(div);
+    })
+}
+
+document.querySelector("#btn").addEventListener("click",function(){
+    window.location.href="cart.html";
+})
+
+
+var totalitem=0;
+
+document.querySelector("#cart").addEventListener("click",function(){
+   order();
+});
+
+var dish=JSON.parse(localStorage.getItem("dishdata"))||[];
+
+function order(){
+ console.log("hello");
+
+    var name=document.querySelector("#name")
+    var price=document.querySelector("#price")
+    var cou=document.querySelector("#item");
+    totalitem=totalitem+1;
+    cou.append(totalitem);
+
+    var obj={
+        name1:name.value,
+        price1:price.value
+    }
+    dish.push(obj);
+    localStorage.setItem("dishdata",JSON.stringify(dish));
+}
+
+</script>
