@@ -4,28 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NavBar</title>
-    <style>
-        .nav{
-          border: 2px solid salmon;
-          display: flex;
-          justify-content: space-around;  
-        }
-        .nav>div{
-            font-weight: bold;
-        }
-    </style>
+    <title>Navbar</title>
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <div class="nav">
-       <div id="menu">Menu</div>
-       <div>logIn</div>
-       <div>SignUp</div>
+    <div id="navbar">
+        <div id="navContent">
+            <h3>Signup</h3>
+            <h3>Login</h3>
+            <h3 onclick="menu()">Menu</h3>
+        </div>
     </div>
 </body>
 </html>
 <script>
-    document.querySelector("#menu").addEventListener("click",function(){
+    function menu(){
         window.location.href="menu.html";
-    })
+    }
 </script>
